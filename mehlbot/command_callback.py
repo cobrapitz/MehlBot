@@ -1,4 +1,5 @@
 import discord
+
 from mehlbot.command import Command
 from mehlbot.logger import setup_logger
 
