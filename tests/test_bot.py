@@ -1,51 +1,59 @@
-import logging
-from dataclasses import MISSING
-from typing import Any, Optional
+"""Contains the actual tests for the Discord bot."""
+import unittest
+from unittest import IsolatedAsyncioTestCase
 
 import discord
-from discord import Message, Intents
 
-from mehlbot import command_callback
-from mehlbot.command import bot_commands
-from mehlbot.logger import setup_logger
-
-logger = setup_logger(__name__)
+from tests.bot import TestBot
+from tests.stub_classes import Channel, Message, User
 
 
-class TestBot(discord.Client):
-    """
-    Slightly different version from hello_bot.py
-    """
+class TestCommands(IsolatedAsyncioTestCase):
 
-    def __init__(self, *, intents: Intents = discord.Intents.all(), **options: Any) -> None:
-        super().__init__(intents=intents, **options)
+    """Test class that contains all tests."""
 
-    def run(
-            self,
-            token: str,
-            *,
-            reconnect: bool = True,
-            log_handler: Optional[logging.Handler] = MISSING,
-            log_formatter: logging.Formatter = MISSING,
-            log_level: int = MISSING,
-            root_logger: bool = False,
-    ) -> None:
-        pass
+    async def get_test_data(self) -> tuple[Message, TestBot]:
+        """Get minimal data (bot and message) to test the bot."""
+        hello_bot = TestBot(discord.Intents.all())
+        hello_bot.run("no-token")
 
-    async def on_ready(self) -> None:
-        logger.info("Bot started.")
+        await hello_bot.on_ready()
 
-    async def on_message(self, message: Message):
-        # ignore messages from the bot itself
-        if message.author == self.user:
-            return
+        msg = Message()
+        msg.author = User()
+        msg.channel = Channel()
+        return msg, hello_bot
 
-        # check if the message is a command
-        command_found = await command_callback.process_command(self, bot_commands, message)
+    async def test_false_command(self):
+        """Check if a not valid command is a command."""
+        msg, hello_bot = await self.get_test_data()
 
-        # log message and prepend command
-        log_msg = ""
-        if command_found:
-            log_msg += "command: "
-        log_msg += f"{message.author.nick} ({message.author.name}): '{message.content}'"
-        logger.info(log_msg)
+        msg.content = "hel"
+        await hello_bot.on_message(msg)
+
+        assert msg.channel.last_message == ""
+
+    async def test_normal_message(self):
+        """Check if a regular message counts as a."""
+        msg, hello_bot = await self.get_test_data()
+
+        msg.content = "Does the bot have a help command?"
+        await hello_bot.on_message(msg)
+
+        assert msg.channel.last_message == ""
+
+    async def test_command(self):
+        """Check if the help command prints the expected output."""
+        msg, hello_bot = await self.get_test_data()
+
+        msg.content = "help"
+        await hello_bot.on_message(msg)
+
+        assert msg.channel.last_message.startswith("Available commands:")
+        assert "```yaml" in msg.channel.last_message
+        assert "This bot has no commands." in msg.channel.last_message
+        assert msg.channel.last_message.endswith("```")
+
+
+if __name__ == "__main__":
+    unittest.main()
