@@ -209,5 +209,5 @@ color = true
 omit-covered-files = false
 generate-badge = "./docs/badges/interrogate-badge.svg"
 badge-format = "svg"
-
+badge-style = "flat"
 
