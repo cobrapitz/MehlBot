@@ -50,7 +50,7 @@ def main():
 
     (in .gitignore).
     """
-    hello_bot = HelloBot()
+    hello_bot = HelloBot(discord.Intents.all())
 
     with Path("token.txt").open() as file:
         token = file.read()

@@ -28,7 +28,7 @@ class TestCommands(IsolatedAsyncioTestCase):
         msg, hello_bot = await self.get_test_data()
 
         msg.content = "hel"
-        await hello_bot.on_message(msg)
+        await hello_bot.on_message(msg)  # type: ignore
 
         assert msg.channel.last_message == ""
 
@@ -37,7 +37,7 @@ class TestCommands(IsolatedAsyncioTestCase):
         msg, hello_bot = await self.get_test_data()
 
         msg.content = "Does the bot have a help command?"
-        await hello_bot.on_message(msg)
+        await hello_bot.on_message(msg)  # type: ignore
 
         assert msg.channel.last_message == ""
 
@@ -46,7 +46,7 @@ class TestCommands(IsolatedAsyncioTestCase):
         msg, hello_bot = await self.get_test_data()
 
         msg.content = "help"
-        await hello_bot.on_message(msg)
+        await hello_bot.on_message(msg)  # type: ignore
 
         assert msg.channel.last_message.startswith("Available commands:")
         assert "```yaml" in msg.channel.last_message
