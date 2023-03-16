@@ -5,9 +5,8 @@
 import os
 import sys
 
-import mehlbot
-
 sys.path.insert(0, os.path.abspath("."))
+
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -16,7 +15,7 @@ sys.path.insert(0, os.path.abspath("."))
 project = "MehlBot"
 copyright = "2023, Cobrapitz"
 author = "Cobrapitz"
-version = release = mehlbot.version
+version = release = "1.1.1"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -35,7 +34,7 @@ extensions = [
 ]
 
 templates_path = ["_templates"]
-exclude_patterns = ["build", "Thumbs.db", ".DS_Store"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 language = "en"
 

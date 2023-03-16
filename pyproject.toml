@@ -87,6 +87,12 @@ target-version = [
     'py310',
     'py311',
 ]
+extend-exclude = '''
+/(
+  | docs
+  | profiling
+)/
+'''
 
 [tool.mypy]
 ignore_missing_imports = true
@@ -204,7 +210,7 @@ ignore-nested-functions = false
 ignore-nested-classes = true
 ignore-setters = false
 fail-under = 95
-exclude = ["setup.py", "docs", "build", "conf.py"]
+exclude = ["setup.py", "docs", "_build", "conf.py"]
 ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*"]
 # possible values: 0 (minimal output), 1 (-v), 2 (-vv)
 verbose = 2
