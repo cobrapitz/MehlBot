@@ -3,12 +3,6 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import os
-import sys
-from typing import List
-
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath("."))))
-
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -32,7 +26,7 @@ extensions = [
 ]
 
 templates_path = ["_templates"]
-exclude_patterns: List = []
+exclude_patterns = ["build", "Thumbs.db", ".DS_Store"]
 
 language = "en"
 

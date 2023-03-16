@@ -7,19 +7,11 @@ repos:
       - id: poetry-export
         args: [ "-f", "requirements.txt", "-o", "requirements.txt" ]
 
-  - repo: https://github.com/econchick/interrogate
-    rev: 1.5.0
-    hooks:
-      - id: interrogate
-        # 85 since interrogate isn't ignoring __init__.py as configured
-        # fails without --quiet
-        args: [ "--fail-under", "85", "--quiet" ]
-
-# automatically upgrades to new python syntax (might not be wanted when support multiple python versions)
-#  - repo: https://github.com/asottile/pyupgrade
-#    rev: v3.3.1
-#    hooks:
-#      - id: pyupgrade
+  # automatically upgrades to new python syntax (might not be wanted when support multiple python versions)
+  #  - repo: https://github.com/asottile/pyupgrade
+  #    rev: v3.3.1
+  #    hooks:
+  #      - id: pyupgrade
 
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
@@ -51,7 +43,7 @@ repos:
     rev: v1.1.1
     hooks:
       - id: mypy
-        args: [ --config-file=pyproject.toml ]
+        args: [ --config-file=./pyproject.toml ]
 
   - repo: https://github.com/RobertCraigie/pyright-python
     rev: v1.1.298
@@ -62,7 +54,15 @@ repos:
     rev: v1.5.0
     hooks:
       - id: docformatter
-        args: [ "--config", "./pyproject.toml", "-c"]
+        args: [ "--config", "./pyproject.toml", "-c" ]
+
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.5.0
+    hooks:
+      - id: interrogate
+        # 85 since interrogate isn't ignoring __init__.py as configured
+        # fails without --quiet
+        args: [ "--fail-under", "85", "-v", "-c", "./pyproject.toml", "." ]
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
     rev: 'v0.0.256'
@@ -73,4 +73,4 @@ repos:
     rev: 1.7.5
     hooks:
       - id: bandit
-        args: [ "-c", "pyproject.toml" ]
+        args: [ "-c", "./pyproject.toml" ]
