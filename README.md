@@ -20,7 +20,7 @@ This allows an easy integration to existing bots and creation of new bots.
 
 Documentation: [docs](https://mehlbot.readthedocs.io/en/latest/)
 
-See [examples/hellow_bot.py](./examples/hello_bot.py) for full source code.
+See [examples/hellow_bot.py](https://github.com/cobrapitz/MehlBot/blob/master/examples/hello_bot.py) for full source code.
 ```Python
 # imports ... 
 
