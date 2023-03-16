@@ -4,16 +4,21 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "mehlbot"
-version = "1.1.0"
+version = "1.1.1"
 description = "A baisc interface for discord bots to handle receiveing commands using the discord.py package."
 authors = ["Cobrapitz", "", "cobrapitz@protonmail.com"]
 license = "MIT"
-
-[project]
-urls.Homepage = "https://github.com/cobrapitz/MehlBot"
-urls.Code = "https://github.com/cobrapitz/MehlBot"
-urls."Issue tracker" = "https://github.com/cobrapitz/MehlBot/issues"
+keywords = ["Discord", "discord.py", "Discord-Bot", "Discord-Command-Bot", "Python"]
 readme = "README.md"
+homepage = "https://github.com/cobrapitz/MehlBot"
+repository = "https://github.com/cobrapitz/MehlBot"
+documentation = "https://mehlbot.readthedocs.io/en/latest/"
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.urls]
+"Issues" = "https://github.com/cobrapitz/MehlBot/issues"
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
