@@ -13,7 +13,7 @@ license = "MIT"
 urls.Homepage = "https://github.com/cobrapitz/MehlBot"
 urls.Code = "https://github.com/cobrapitz/MehlBot"
 urls."Issue tracker" = "https://github.com/cobrapitz/MehlBot/issues"
-readme = "README.rst"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
