@@ -32,10 +32,18 @@ interrogate = "^1.5.0"
 bandit = "^1.7.5"
 black = "^23.1.0"
 ruff = "^0.0.256"
+pyupgrade = "^3.3.1"
+mypy = "^1.1.1"
+
+[tool.taskipy.settings]
+use_vars = true
+
+[tool.taskipy.variables]
+tests_dir = "tests"
 
 [tool.taskipy.tasks]
-test = "pytest tests"
-coverage = "coverage run -m pytest tests"
+test = "pytest {tests_dir}"
+coverage = "coverage run -m pytest {tests_dir}"
 coverage-report = "coverage report"
 flake8 = "flake8 -v"
 sphinx-start = "sphinx-quickstart -p MehlBot --sep --ext-autodoc --ext-doctest --ext-githubpages -l en" # inside docs
@@ -53,6 +61,8 @@ black-diff = "black . --diff --color"
 black-check = "black . --check"
 ruff = "ruff check ."
 ruff-fix = "ruff check . --fix"
+docformatter = "docformatter --in-place --config ./pyproject.toml"
+mypy = "mypy . --config-file ./pyproject.toml"
 
 [tool.pytest.ini_options]
 filterwarnings = ["ignore::DeprecationWarning", "ignore::pytest.PytestCollectionWarning"]
@@ -64,7 +74,15 @@ tests = ["B201", "B301"]
 
 [tool.black]
 line-length = 120
+target-version = [
+    'py38',
+    'py39',
+    'py310',
+    'py311',
+]
 
+[tool.mypy]
+ignore_missing_imports = true
 
 [tool.isort]
 profile = "black"
@@ -91,6 +109,13 @@ exclude_lines = [
 ]
 ignore_errors = true
 
+[tool.docformatter]
+recursive = true
+wrap-summaries = 120
+wrap-descriptions = 120
+blank = true
+syntax = "sphinx"
+
 [tool.ruff]
 select = ["ALL"]
 ignore = [
@@ -104,13 +129,18 @@ ignore = [
     "D106", # pydocstyle - missing docstring in public nested class
     "D107", # pydocstyle - missing docstring in __init__
     "D202", # pydocstyle - no blank lines allowed after function docstring
+    "D203", # 1 blank line required before class docstring
     "D205", # pydocstyle - 1 blank line required between summary line and description
+    "D209", # Multi-line docstring closing quotes should be on a separate line -> docformatter
     "D211", # no-blank-line-before-class
     "D213", # multi-line-summary-second-line
     "D401", # First line of docstring should be in imperative mood
     "D415", # pydocstyle - first line should end with a period, question mark, or exclamation point
+    "PGH003", # Use specific rule codes when ignoring type issues
     "UP037", # pyupgrade - removes quotes from type annotation
+    "UP006", # Use `list` instead of `List` for type annotations -> for py3.8
     "UP007", # UP007 [*] Use `X | Y` for type annotations -> requires py310
+    "UP035", # `typing.List` is deprecated, use `list` instead  -> for py3.8
     "A003", # flake8-builtins - class attribute {name} is shadowing a python builtin
     "ANN003", # Missing type annotation for `**options`
     "ANN101", # Missing type annotation for `self` in method

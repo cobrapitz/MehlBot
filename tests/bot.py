@@ -4,7 +4,7 @@ from dataclasses import MISSING
 from typing import Optional
 
 import discord
-from discord import Intents, Message
+from discord import Intents, Member, Message
 
 from mehlbot import command_callback
 from mehlbot.command import bot_commands
@@ -15,8 +15,8 @@ logger = setup_logger(__name__)
 
 
 class TestBot(discord.Client):
-
     """Slightly different version from hello_bot.py.
+
     Stub run method.
     """
 
@@ -28,12 +28,13 @@ class TestBot(discord.Client):
         token: str,
         *,
         reconnect: bool = True,
-        log_handler: Optional[logging.Handler] = MISSING,
-        log_formatter: logging.Formatter = MISSING,
-        log_level: int = MISSING,
+        log_handler: Optional[logging.Handler] = MISSING,  # type: ignore
+        log_formatter: logging.Formatter = MISSING,  # type: ignore
+        log_level: int = MISSING,  # type: ignore
         root_logger: bool = False,
     ) -> None:
-        """Overridden run method, that doesn't require a valid Discord token."""
+        """Overridden run method, that doesn't require a valid Discord
+        token."""
 
     async def on_ready(self) -> None:
         """Ready method, called when bot is started."""
@@ -41,6 +42,7 @@ class TestBot(discord.Client):
 
     async def on_message(self, message: Message):
         """Whenver message is received from Discord."""
+        assert isinstance(message.author, Member)
         if message.author == self.user:
             return
 
@@ -49,5 +51,6 @@ class TestBot(discord.Client):
         log_msg = ""
         if command_found:
             log_msg += "command: "
+
         log_msg += f"{message.author.nick} ({message.author.name}): '{message.content}'"
         logger.info(log_msg)

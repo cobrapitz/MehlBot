@@ -9,7 +9,6 @@ from tests.stub_classes import Channel, Message, User
 
 
 class TestCommands(IsolatedAsyncioTestCase):
-
     """Test class that contains all tests."""
 
     async def get_test_data(self) -> tuple[Message, TestBot]:

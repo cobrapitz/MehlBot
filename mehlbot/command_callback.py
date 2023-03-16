@@ -1,4 +1,7 @@
-"""The command processor. Contains methods to process the Commands in command.py."""
+"""The command processor.
+
+Contains methods to process the Commands in command.py.
+"""
 import discord
 
 from mehlbot.command import Command
@@ -9,8 +12,9 @@ logger = setup_logger(__name__)
 
 
 async def process_command(client: discord.Client, commands: dict[str, Command], message: discord.Message) -> bool:
-    """Processes the message with the given commands.
-    For usage see the /example directory.
+    """Processes the message with the given commands. For usage see the.
+
+    /example directory.
 
     :param client: discord.Client
     :param commands: bot_commands, unless using custom commands storage.

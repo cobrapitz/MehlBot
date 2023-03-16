@@ -1,7 +1,9 @@
 """Contains Command class and bot commands as a global variable.
+
 Also adds 'help' to print all added commands to bot_commands.
 """
 from collections.abc import Callable
+from typing import List
 
 import discord
 
@@ -10,12 +12,12 @@ bot_commands = {}
 
 
 class Command:
-
-    """The Commands class, that contains the data needed for a discord command."""
+    """The Commands class, that contains the data needed for a discord
+    command."""
 
     command_name: str = ""
-    callback = None
-    allowed_num_args: list[[str]] = []
+    callback: Callable
+    allowed_num_args: List[List[str]] = []
     description: str = ""
     var_args: bool = False
 
@@ -23,12 +25,12 @@ class Command:
 def add_command(
     command_name: str,
     callback: Callable,
-    allowed_num_args: list[[str]],
+    allowed_num_args: List[List[str]],
     description: str = "",
     var_args: None | bool = None,
 ):
-    """The interface/method to add commands to the bot.
-    'help' command gets added when importing this module.
+    """The interface/method to add commands to the bot. 'help' command gets
+    added when importing this module.
 
     A basic example to add a command can be seen here:
 
@@ -70,6 +72,7 @@ def add_command(
 
 async def _help(message: discord.Message, _client: discord.Client, _args: list) -> None:
     """Replies/sends every command to the user's channel.
+
     :param message: received discord message
     :param _client: client
     :param _args: received arguments

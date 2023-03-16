@@ -13,7 +13,13 @@ repos:
       - id: interrogate
         # 85 since interrogate isn't ignoring __init__.py as configured
         # fails without --quiet
-        args: [ "--fail-under", "85", "-v"]
+        args: [ "--fail-under", "85", "--quiet" ]
+
+# automatically upgrades to new python syntax (might not be wanted when support multiple python versions)
+#  - repo: https://github.com/asottile/pyupgrade
+#    rev: v3.3.1
+#    hooks:
+#      - id: pyupgrade
 
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
@@ -30,30 +36,28 @@ repos:
         name: Sort imports isort (pyi)
         types: [ pyi ]
 
-  - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
-    hooks:
-      - id: flake8
-
   - repo: https://github.com/psf/black
     rev: 23.1.0
     hooks:
       - id: black
         name: black check (Python)
 
-  #  - repo: local
-  #    hooks:
-  #      - id: pylint
-  #        name: pylint
-  #        entry: pylint
-  #        language: system
-  #        types: [ python ]
-  #        args:
-  #          [
-  #            "-rn", # Only display messages
-  #            "-sn", # Don't display the score
-  #            "--rcfile=pylintrc", # Link to your config file
-  #          ]
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.1.1
+    hooks:
+      - id: mypy
+        args: [ --config-file=pyproject.toml ]
+
+  - repo: https://github.com/PyCQA/docformatter
+    rev: v1.5.0
+    hooks:
+      - id: docformatter
+        args: [ "--config", "./pyproject.toml", "-c"]
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
     rev: 'v0.0.256'

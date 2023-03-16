@@ -2,7 +2,6 @@
 
 
 class Channel:
-
     """Discord channel class with only the tested methods."""
 
     last_message: str = ""
@@ -12,18 +11,16 @@ class Channel:
         self.last_message = f"{content}"
 
 
-class Message:
-
-    """Message class with necessary test data."""
-
-    author = None
-    content: str = "test:content"
-    channel: Channel
-
-
 class User:
-
     """User class  with necessary test data."""
 
     name: str = "test:name"
     nick: str = "test:nick"
+
+
+class Message:
+    """Message class with necessary test data."""
+
+    author: User
+    content: str = "test:content"
+    channel: Channel
