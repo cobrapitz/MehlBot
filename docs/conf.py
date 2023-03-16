@@ -2,18 +2,26 @@
 #
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
+import os
+import sys
+
+import mehlbot
+
+sys.path.insert(0, os.path.abspath("."))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+
 project = "MehlBot"
 copyright = "2023, Cobrapitz"
 author = "Cobrapitz"
-release = "1.1.1"
+version = release = mehlbot.version
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
+source_suffix = ".rst"
 
 master_doc = "index"
 extensions = [
@@ -23,6 +31,7 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.githubpages",
     "sphinx_rtd_theme",
+    "sphinx.ext.autosummary",
 ]
 
 templates_path = ["_templates"]
@@ -35,3 +44,5 @@ language = "en"
 
 html_theme = "sphinx_rtd_theme"  # 'alabaster'
 html_static_path = ["_static"]
+
+autosummary_generate = True
