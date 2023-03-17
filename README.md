@@ -76,13 +76,4 @@ add_command("export playlist", _export_playlist,
 
 ```
 
-
-
 - - - 
-### Dev 
-
-- `poetry run task --list` to show all defined tasks to run. (run task with: `poetry run task <task>`)
-- note `make html` -> rst files copy into source folder, otherwise moduels not found
-
-[//]: # (- `pre-commit install` should always be the first thing you do.)
-
