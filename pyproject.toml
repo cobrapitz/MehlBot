@@ -5,8 +5,8 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "mehlbot"
 version = "1.1.2"
-description = "A baisc interface for discord bots to handle receiveing commands using the discord.py package."
-authors = ["K", "Brandl", "kbrandla@duck.com"]
+description = "A basic interface for Discord bots to handle receiving commands using the discord.py package."
+authors = ["K Brandl kbrandla@duck.com"]
 license = "MIT"
 keywords = ["Discord", "discord.py", "Discord-Bot", "Discord-Command-Bot", "Python"]
 readme = "README.md"
