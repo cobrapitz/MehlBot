@@ -13,9 +13,9 @@ sys.path.insert(0, os.path.abspath("../.."))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "MehlBot"
-copyright = "2023, Cobrapitz"
-author = "Cobrapitz"
-release = "1.1.1"
+copyright = "2023, K. Brandl"
+author = "K. Brandl"
+release = "1.1.2"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
