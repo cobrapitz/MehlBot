@@ -5,7 +5,7 @@ from unittest import IsolatedAsyncioTestCase
 import discord
 
 from tests.bot import TestBot
-from tests.stub_classes import Channel, Message, User
+from tests.stub_classes import Channel, Member, Message
 
 
 class TestCommands(IsolatedAsyncioTestCase):
@@ -19,7 +19,7 @@ class TestCommands(IsolatedAsyncioTestCase):
         await hello_bot.on_ready()
 
         msg = Message()
-        msg.author = User()
+        msg.author = Member()
         msg.channel = Channel()
         return msg, hello_bot
 

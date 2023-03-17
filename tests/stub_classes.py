@@ -11,7 +11,7 @@ class Channel:
         self.last_message = f"{content}"
 
 
-class User:
+class Member:
     """User class  with necessary test data."""
 
     name: str = "test:name"
@@ -21,6 +21,6 @@ class User:
 class Message:
     """Message class with necessary test data."""
 
-    author: User
+    author: Member
     content: str = "test:content"
     channel: Channel

@@ -4,11 +4,12 @@ from dataclasses import MISSING
 from typing import Optional
 
 import discord
-from discord import Intents, Member, Message
+from discord import Intents, Message
 
 from mehlbot import command_callback
 from mehlbot.command import bot_commands
 from mehlbot.logger import setup_logger
+from tests.stub_classes import Member
 
 
 logger = setup_logger(__name__)

@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 name = "mehlbot"
 version = "1.1.1"
 description = "A baisc interface for discord bots to handle receiveing commands using the discord.py package."
-authors = ["Cobrapitz", "", "cobrapitz@protonmail.com"]
+authors = ["K", "Brandl", "kbrandla@duck.com"]
 license = "MIT"
 keywords = ["Discord", "discord.py", "Discord-Bot", "Discord-Command-Bot", "Python"]
 readme = "README.md"
@@ -40,6 +40,7 @@ ruff = "^0.0.256"
 pyupgrade = "^3.3.1"
 mypy = "^1.1.1"
 pyright = "^1.1.299"
+tox = "^4.4.7"
 
 [tool.taskipy.settings]
 use_vars = true
@@ -70,6 +71,7 @@ ruff-fix = "ruff check . --fix"
 docformatter = "docformatter --in-place --config ./pyproject.toml"
 mypy = "mypy . --config-file ./pyproject.toml"
 pyright = "pyright"
+tox = "tox"
 
 [tool.pytest.ini_options]
 filterwarnings = ["ignore::DeprecationWarning", "ignore::pytest.PytestCollectionWarning"]

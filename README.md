@@ -53,6 +53,30 @@ def main():
     hello_bot.run(token)
 ```
 
+And this shows how to add commands
+
+```Python
+from mehlbot.command import add_command
+
+async def _add(message: discord.Message, client: discord.Client, args: List):
+    url = args[0]
+    ...
+
+async def _export_playlist(message: discord.Message, client: discord.Client, args: List):
+    playlist = args[0]
+    ...
+    
+add_command("add", _add,
+            allowed_num_args=[["url"]], # requires exactly 1 argument
+            description="Adds the given YouTube url to the current playlist.")
+
+add_command("export playlist", _export_playlist,
+            allowed_num_args=[[], ["playlist_name"]], # either 0 or 1 arg
+            description="Exports urls of current playlist or of given playlist.")
+
+```
+
+
 
 - - - 
 ### Dev 
