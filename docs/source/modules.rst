@@ -1,9 +1,7 @@
-MehlBot
-=======
+MehlBot module
+===============
 
 .. toctree::
    :maxdepth: 4
 
-   examples
    mehlbot
-   tests
