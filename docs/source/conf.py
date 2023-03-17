@@ -7,7 +7,7 @@ import os
 import sys
 from typing import List
 
-sys.path.insert(0, os.path.abspath("../../mehlbot/"))
+sys.path.insert(0, os.path.abspath("../.."))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
